@@ -91,7 +91,7 @@ export default function VibeSearch() {
     }, [messages, results]);
 
     return (
-        <div className="w-auto md:w-5xl mx-auto">
+        <div className="w-auto mx-auto">
             <div className="relative h-[600px] flex flex-col overflow-hidden rounded-2xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.25)]">
                 <div className="absolute inset-0 bg-gradient-to-br from-white/40 via-transparent to-transparent opacity-20 pointer-events-none" />
                 <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-transparent">
@@ -209,7 +209,7 @@ export default function VibeSearch() {
                     <div ref={endRef} />
                 </div>
                 <form onSubmit={handleSubmit} className="border-t p-4 bg-slate-950/30">
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 justify-center">
                         <input
                             type="text"
                             value={input}
