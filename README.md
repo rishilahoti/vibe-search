@@ -1,14 +1,10 @@
 
 
 # Vibe Search 🔮
-
-Vibe Search is a modern, AI-powered property discovery platform built with Next.js. Instead of using traditional filters, users can describe their ideal property's "vibe" in natural language to find places that truly match their lifestyle and energy.
-
 ## ✨ About The Project
 
-This project revolutionizes property searching by moving away from rigid checkboxes and dropdowns. It leverages a semantic search backend (powered by Google Gemini) to understand the user's intent and feeling behind their query. The frontend is a sleek, visually engaging experience with a chat-style interface, dynamic backgrounds, and interactive result cards.
-
-The core idea is simple: **Don't search, just describe.**
+Vibe Search is an interactive Next.js application that helps users discover real estate properties based on descriptive "vibes" (e.g., "beach property in Goa", "mountain retreat", "farmhouse investment").
+It combines a search API, AI-driven property matching, and modern UI components with animations and effects to deliver a delightful user experience.
 
 ---
 
