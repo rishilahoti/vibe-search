@@ -1,36 +1,134 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+# Vibe Search 🔮
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Vibe Search is a modern, AI-powered property discovery platform built with Next.js. Instead of using traditional filters, users can describe their ideal property's "vibe" in natural language to find places that truly match their lifestyle and energy.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ About The Project
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project revolutionizes property searching by moving away from rigid checkboxes and dropdowns. It leverages a semantic search backend (powered by Google Gemini) to understand the user's intent and feeling behind their query. The frontend is a sleek, visually engaging experience with a chat-style interface, dynamic backgrounds, and interactive result cards.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The core idea is simple: **Don't search, just describe.**
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Key Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+-   **🤖 AI-Powered Semantic Search**: Users can input natural language queries like "a serene mountain retreat for yoga" or "a vibrant beachfront house for parties" to find relevant properties.
+-   **💬 Interactive Chat UI**: A modern, chat-based interface for a more intuitive and engaging search experience.
+-   **✨ Dynamic & Animated Frontend**:
+    -   A procedural WebGL animated background (`DarkVeil`) creates an immersive atmosphere.
+    -   `SpotlightCard` components provide a cool hover effect that follows the user's cursor.
+    -   Animated gradient text and badges add a polished, premium feel.
+-   **✅ Detailed & Relevant Results**: Each property card displays key information, including a relevance score, the reasons it matches the user's vibe, and descriptive tags.
+-   **⚡️ Serverless Backend**: The search logic is handled by a Next.js API route, making the application fast and scalable.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🛠️ Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is built with a modern, TypeScript-first tech stack.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+-   **Framework**: [Next.js](https://nextjs.org/) (App Router)
+-   **Language**: [TypeScript](https://www.typescriptlang.org/)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **AI Backend**: Google Gemini API (for the semantic `findPropertiesByVibe` function)
+-   **Graphics & Animation**:
+    -   [ogl](https://oframe.github.io/ogl/): A small, effective WebGL library for the animated background.
+    -   Custom CSS animations and React hooks for UI effects.
+
+---
+
+## ⚙️ Getting Started
+
+To get a local copy up and running, follow these simple steps.
+
+### Prerequisites
+
+You need to have Node.js and npm (or yarn) installed on your machine.
+
+### Installation
+
+1.  **Clone the repository:**
+    ```sh
+    git clone https://github.com/your-username/vibe-search.git
+    cd vibe-search
+    ```
+2.  **Install dependencies:**
+    ```sh
+    npm install
+    # or
+    yarn install
+    ```
+3.  **Set up environment variables:**
+    You'll need to create a `.env.local` file in the root of the project and add your Google Gemini API key.
+    ```env
+    GEMINI_API_KEY='YOUR_API_KEY_HERE'
+    ```
+4.  **Run the development server:**
+    ```sh
+    npm run dev
+    # or
+    yarn dev
+    ```
+    Open [http://localhost:3000](https://www.google.com/search?q=http://localhost:3000) in your browser to see the result.
+
+---
+
+## 🔌 API Endpoint
+
+The project contains a core API endpoint for handling the search logic.
+
+### Vibe Search
+
+-   **Endpoint**: `POST /api/chat`
+
+-   **Description**: Takes a user's natural language message and returns a list of matching properties from the `enhancedProperties.json` dataset.
+
+-   **Request Body**:
+
+    ```json
+    {
+    	"message": "A quiet and peaceful place surrounded by nature."
+    }
+    ```
+
+-   **Success Response** (`200 OK`):
+
+    ```json
+    {
+      "success": true,
+      "results": [
+        {
+          "id": "prop1",
+          "ProjectName": "Serene Meadows",
+          "vibeSummary": "An oasis of calm...",
+          "...other property details"
+        }
+      ],
+      "matchData": [
+        {
+          "id": "prop1",
+          "relevanceScore": 9,
+          "matchReasons": ["Surrounded by lush greenery...", "Designed for tranquility..."]
+        }
+      ],
+      "query": "A quiet and peaceful place surrounded by nature."
+    }
+    ```
+
+-   **Endpoint**: `GET /api/chat`
+
+-   **Description**: A simple health-check endpoint to confirm the API is running.
+
+---
+
+## 🧩 Components Overview
+
+The frontend is built with several reusable and specialized React components.
+
+-   `VibeSearch.tsx`: The main component that orchestrates the entire chat interface, state management, and API calls.
+-   `SpotlightCard.tsx`: An interactive card used to display each property result. It features a beautiful spotlight effect on mouse hover.
+-   `DarkVeil.tsx`: Creates the stunning, procedural WebGL background animation using `ogl` and GLSL shaders.
+-   `AnimatedGradientText.tsx` & `GradientText.tsx`: Reusable components for creating eye-catching animated gradient text effects.
+-   `AnimateBadge.tsx`: A small, animated badge component used for announcements.
